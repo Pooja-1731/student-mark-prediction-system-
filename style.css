@@ -1,0 +1,601 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+/* ================= BODY BACKGROUND ================= */
+
+body {
+    margin: 0;
+    color: #14213d;
+
+    background-image:
+        linear-gradient(
+            rgba(240, 245, 255, 0.84),
+            rgba(247, 243, 255, 0.88)
+        ),
+        url("background.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+/* ================= LOGIN ================= */
+
+.login-body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-image:
+        linear-gradient(
+            rgba(238, 242, 255, 0.78),
+            rgba(245, 240, 255, 0.82)
+        ),
+        url("background.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.login-box {
+    width: 380px;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    padding: 40px;
+
+    border-radius: 22px;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 50px rgba(31, 41, 55, 0.18);
+
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.login-box h1 {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.login-box h2 {
+    font-size: 18px;
+    color: #667085;
+    margin-bottom: 30px;
+}
+
+.login-box form {
+    text-align: left;
+}
+
+.login-box label {
+    display: block;
+    margin: 15px 0 7px;
+    font-weight: bold;
+}
+
+.login-box input {
+    width: 100%;
+
+    padding: 13px;
+
+    border: 1px solid #d0d5dd;
+
+    border-radius: 9px;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+.login-box input:focus {
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+.login-box button {
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #2563eb
+        );
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+.login-box button:hover {
+    transform: translateY(-1px);
+}
+
+.error {
+    color: #dc2626;
+    margin-top: 10px;
+}
+
+
+/* ================= MAIN LAYOUT ================= */
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* ================= SIDEBAR ================= */
+
+.sidebar {
+    width: 265px;
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            180deg,
+            #0b1326,
+            #111c35,
+            #101827
+        );
+
+    color: white;
+
+    padding: 30px 20px;
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    box-shadow:
+        5px 0 25px rgba(15, 23, 42, 0.20);
+}
+
+.sidebar h2 {
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.sidebar p {
+    color: #aebbd2;
+    margin-bottom: 35px;
+}
+
+.sidebar a {
+    display: block;
+
+    text-decoration: none;
+
+    color: #e5e7eb;
+
+    padding: 14px 18px;
+
+    margin: 7px 0;
+
+    border-radius: 11px;
+
+    font-size: 17px;
+
+    transition: 0.25s;
+}
+
+.sidebar a:hover {
+    background: rgba(255, 255, 255, 0.08);
+
+    transform: translateX(3px);
+}
+
+.sidebar a.active {
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #2563eb
+        );
+
+    color: white;
+
+    box-shadow:
+        0 8px 20px rgba(37, 99, 235, 0.30);
+}
+
+
+/* ================= MAIN ================= */
+
+.main {
+    margin-left: 265px;
+
+    width: calc(100% - 265px);
+
+    padding: 45px;
+
+    background: transparent;
+}
+
+.topbar {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 35px;
+}
+
+.topbar h1 {
+    font-size: 38px;
+    margin-bottom: 8px;
+}
+
+.topbar p {
+    color: #667085;
+    font-size: 18px;
+}
+
+.admin {
+    background: rgba(255, 255, 255, 0.92);
+
+    padding: 17px 25px;
+
+    border-radius: 13px;
+
+    box-shadow:
+        0 8px 25px rgba(31, 41, 55, 0.08);
+
+    font-size: 18px;
+}
+
+
+/* ================= DASHBOARD CARDS ================= */
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 22px;
+
+    margin-bottom: 30px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.94);
+
+    padding: 28px;
+
+    border-radius: 17px;
+
+    box-shadow:
+        0 10px 30px rgba(31, 41, 55, 0.08);
+
+    transition: 0.25s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 15px 35px rgba(31, 41, 55, 0.13);
+}
+
+.card h3 {
+    color: #64748b;
+
+    font-size: 18px;
+
+    margin-bottom: 15px;
+}
+
+.card h1 {
+    color: #315eea;
+
+    font-size: 38px;
+
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #94a3b8;
+}
+
+
+/* ================= WELCOME ================= */
+
+.welcome {
+    background: rgba(255, 255, 255, 0.94);
+
+    padding: 32px;
+
+    border-radius: 17px;
+
+    box-shadow:
+        0 10px 30px rgba(31, 41, 55, 0.08);
+
+    margin-bottom: 30px;
+}
+
+.welcome h2 {
+    margin-bottom: 15px;
+}
+
+.welcome p {
+    color: #667085;
+
+    line-height: 1.7;
+
+    margin-bottom: 22px;
+}
+
+.predict-btn {
+    display: inline-block;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #2563eb
+        );
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 13px 22px;
+
+    border-radius: 9px;
+
+    transition: 0.25s;
+}
+
+.predict-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(37, 99, 235, 0.25);
+}
+
+
+/* ================= TABLE ================= */
+
+.activity {
+    background: rgba(255, 255, 255, 0.95);
+
+    padding: 32px;
+
+    border-radius: 17px;
+
+    box-shadow:
+        0 10px 30px rgba(31, 41, 55, 0.08);
+
+    margin-bottom: 30px;
+
+    overflow-x: auto;
+}
+
+.activity h2 {
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+th {
+    background: #eef4ff;
+
+    color: #173b83;
+
+    text-align: left;
+
+    padding: 16px;
+}
+
+td {
+    padding: 16px;
+
+    border-bottom:
+        1px solid #e5e7eb;
+}
+
+tr:hover td {
+    background: #f8faff;
+}
+
+.pass {
+    color: #15803d;
+
+    font-weight: bold;
+}
+
+.risk {
+    color: #dc2626;
+
+    font-weight: bold;
+}
+
+
+/* ================= PREDICTION BOX ================= */
+
+.prediction-box {
+    background: rgba(255, 255, 255, 0.95);
+
+    max-width: 800px;
+
+    padding: 35px;
+
+    border-radius: 17px;
+
+    box-shadow:
+        0 10px 30px rgba(31, 41, 55, 0.08);
+}
+
+.prediction-box h2 {
+    margin-bottom: 25px;
+}
+
+.prediction-box label {
+    display: block;
+
+    margin: 18px 0 7px;
+
+    font-weight: bold;
+}
+
+.prediction-box input {
+    width: 100%;
+
+    padding: 13px;
+
+    border: 1px solid #d0d5dd;
+
+    border-radius: 9px;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+.prediction-box input:focus {
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.10);
+}
+
+.prediction-box button {
+    margin-top: 25px;
+
+    padding: 14px 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #2563eb
+        );
+
+    color: white;
+
+    border: none;
+
+    border-radius: 9px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+
+/* ================= CHART ================= */
+
+#performanceChart {
+    max-height: 420px;
+}
+
+
+/* ================= REPORT CARDS ================= */
+
+.report-card {
+    background: rgba(255, 255, 255, 0.95);
+
+    padding: 28px;
+
+    border-radius: 17px;
+
+    box-shadow:
+        0 10px 30px rgba(31, 41, 55, 0.08);
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+        width: 210px;
+    }
+
+    .main {
+        margin-left: 210px;
+
+        width: calc(100% - 210px);
+
+        padding: 25px;
+    }
+
+    .cards {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .sidebar {
+        position: relative;
+
+        width: 100%;
+
+        min-height: auto;
+    }
+
+    .layout {
+        display: block;
+    }
+
+    .main {
+        margin-left: 0;
+
+        width: 100%;
+
+        padding: 20px;
+    }
+
+    .topbar {
+        display: block;
+    }
+
+    .admin {
+        margin-top: 15px;
+
+        display: inline-block;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}

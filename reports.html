@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Reports - Student Marks Prediction</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <h2>🎓 Student Marks</h2>
+
+        <p>Prediction System</p>
+
+
+        <a href="{{ url_for('dashboard') }}">
+            🏠 Dashboard
+        </a>
+
+
+        <a href="{{ url_for('predict') }}">
+            📊 Predict Marks
+        </a>
+
+
+        <a href="{{ url_for('students') }}">
+            👨‍🎓 Students
+        </a>
+
+
+        <a class="active" href="{{ url_for('reports') }}">
+            📈 Reports
+        </a>
+
+
+        <!-- SETTINGS -->
+        <a href="{{ url_for('settings') }}">
+            ⚙️ Settings
+        </a>
+
+
+        <a href="{{ url_for('logout') }}">
+            🚪 Logout
+        </a>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+
+        <!-- TOP BAR -->
+
+        <div class="topbar">
+
+            <div>
+
+                <h1>Reports</h1>
+
+                <p>
+                    Student performance prediction report
+                </p>
+
+            </div>
+
+
+            <div class="admin">
+                👤 Admin
+            </div>
+
+        </div>
+
+
+
+        <!-- SUMMARY CARDS -->
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <h3>
+                    Total Predictions
+                </h3>
+
+                <h1>
+                    {{ total_predictions }}
+                </h1>
+
+                <p>
+                    Completed Predictions
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <h3>
+                    Passed Students
+                </h3>
+
+                <h1>
+                    {{ pass_count }}
+                </h1>
+
+                <p>
+                    Students Passed
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <h3>
+                    At Risk
+                </h3>
+
+                <h1>
+                    {{ risk_count }}
+                </h1>
+
+                <p>
+                    Need Support
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <h3>
+                    Pass Rate
+                </h3>
+
+                <h1>
+                    {{ pass_rate }}%
+                </h1>
+
+                <p>
+                    Overall Performance
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- PERFORMANCE CHART -->
+
+        <div class="activity">
+
+            <h2>
+                📊 Student Performance Chart
+            </h2>
+
+            <br>
+
+            <canvas id="performanceChart"
+                    height="100">
+            </canvas>
+
+        </div>
+
+
+
+        <!-- REPORT TABLE -->
+
+        <div class="activity">
+
+            <h2>
+                Prediction Report
+            </h2>
+
+            <br>
+
+
+            <table>
+
+                <tr>
+
+                    <th>
+                        Student Name
+                    </th>
+
+                    <th>
+                        Predicted Marks
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                </tr>
+
+
+                {% if predictions %}
+
+
+                    {% for student in predictions %}
+
+                    <tr>
+
+                        <td>
+                            {{ student.student_name }}
+                        </td>
+
+
+                        <td>
+                            {{ student.marks }}%
+                        </td>
+
+
+                        <td class="{% if student.status == 'Pass' %}pass{% else %}risk{% endif %}">
+
+                            {{ student.status }}
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+
+                {% else %}
+
+
+                    <tr>
+
+                        <td colspan="3">
+
+                            No prediction reports available
+
+                        </td>
+
+                    </tr>
+
+
+                {% endif %}
+
+
+            </table>
+
+        </div>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- CHART SCRIPT -->
+
+<script>
+
+    const studentNames = [
+
+        {% for student in predictions %}
+
+            "{{ student.student_name }}",
+
+        {% endfor %}
+
+    ];
+
+
+    const studentMarks = [
+
+        {% for student in predictions %}
+
+            {{ student.marks }},
+
+        {% endfor %}
+
+    ];
+
+
+    const ctx =
+        document.getElementById(
+            "performanceChart"
+        );
+
+
+    new Chart(ctx, {
+
+        type: "bar",
+
+
+        data: {
+
+            labels: studentNames,
+
+
+            datasets: [{
+
+                label: "Predicted Marks (%)",
+
+                data: studentMarks
+
+            }]
+
+        },
+
+
+        options: {
+
+            responsive: true,
+
+
+            scales: {
+
+                y: {
+
+                    beginAtZero: true,
+
+                    max: 100,
+
+
+                    title: {
+
+                        display: true,
+
+                        text: "Marks (%)"
+
+                    }
+
+                },
+
+
+                x: {
+
+                    title: {
+
+                        display: true,
+
+                        text: "Students"
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    });
+
+</script>
+
+
+</body>
+
+</html>

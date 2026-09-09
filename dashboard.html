@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard - Student Marks Prediction</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <h2>🎓 Student Marks</h2>
+        <p>Prediction System</p>
+
+        <a class="active" href="{{ url_for('dashboard') }}">
+            🏠 Dashboard
+        </a>
+
+        <a href="{{ url_for('predict') }}">
+            📊 Predict Marks
+        </a>
+
+        <a href="{{ url_for('students') }}">
+            👨‍🎓 Students
+        </a>
+
+        <a href="{{ url_for('reports') }}">
+            📈 Reports
+        </a>
+
+        <a href="#">
+            ⚙️ Settings
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            🚪 Logout
+        </a>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <!-- TOP BAR -->
+        <div class="topbar">
+
+            <div>
+                <h1>Dashboard</h1>
+
+                <p>
+                    Welcome to Student Marks Prediction System
+                </p>
+            </div>
+
+            <div class="admin">
+                👤 Admin
+            </div>
+
+        </div>
+
+
+        <!-- DASHBOARD CARDS -->
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Total Students</h3>
+                <h1>{{ total_students }}</h1>
+                <p>Registered Students</p>
+            </div>
+
+            <div class="card">
+                <h3>Predictions</h3>
+                <h1>{{ total_predictions }}</h1>
+                <p>Predictions Completed</p>
+            </div>
+
+            <div class="card">
+                <h3>Pass Rate</h3>
+                <h1>{{ pass_rate }}%</h1>
+                <p>Overall Performance</p>
+            </div>
+
+            <div class="card">
+                <h3>At Risk</h3>
+                <h1>{{ risk_count }}</h1>
+                <p>Students Need Support</p>
+            </div>
+
+        </div>
+
+
+        <!-- PREDICTION SECTION -->
+
+        <div class="welcome">
+
+            <h2>Student Marks Prediction</h2>
+
+            <p>
+                Use Machine Learning to predict student academic
+                performance based on attendance, assignment marks
+                and previous examination results.
+            </p>
+
+            <a href="{{ url_for('predict') }}"
+               class="predict-btn">
+                Start Prediction →
+            </a>
+
+        </div>
+
+
+        <!-- RECENT PREDICTIONS -->
+
+        <div class="activity">
+
+            <h2>Recent Predictions</h2>
+
+            <table>
+
+                <tr>
+                    <th>Student</th>
+                    <th>Marks</th>
+                    <th>Status</th>
+                </tr>
+
+                {% if predictions %}
+
+                    {% for student in predictions %}
+
+                    <tr>
+
+                        <td>
+                            {{ student.student_name }}
+                        </td>
+
+                        <td>
+                            {{ student.marks }}%
+                        </td>
+
+                        <td class="{% if student.status == 'Pass' %}pass{% else %}risk{% endif %}">
+                            {{ student.status }}
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <tr>
+                        <td colspan="3">
+                            No predictions yet
+                        </td>
+                    </tr>
+
+                {% endif %}
+
+            </table>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+
+</html>

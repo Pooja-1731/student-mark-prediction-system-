@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Settings - Student Marks Prediction</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <h2>🎓 Student Marks</h2>
+        <p>Prediction System</p>
+
+        <a href="{{ url_for('dashboard') }}">
+            🏠 Dashboard
+        </a>
+
+        <a href="{{ url_for('predict') }}">
+            📊 Predict Marks
+        </a>
+
+        <a href="{{ url_for('students') }}">
+            👨‍🎓 Students
+        </a>
+
+        <a href="{{ url_for('reports') }}">
+            📈 Reports
+        </a>
+
+        <a class="active" href="{{ url_for('settings') }}">
+            ⚙️ Settings
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            🚪 Logout
+        </a>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <div class="topbar">
+
+            <div>
+                <h1>Settings</h1>
+
+                <p>
+                    Manage system settings
+                </p>
+            </div>
+
+            <div class="admin">
+                👤 Admin
+            </div>
+
+        </div>
+
+
+        <!-- SETTINGS BOX -->
+
+        <div class="prediction-box">
+
+            <h2>⚙️ System Settings</h2>
+
+            <br>
+
+            <label>System Name</label>
+
+            <input type="text"
+                   value="Student Marks Prediction System"
+                   readonly>
+
+
+            <label>Admin Username</label>
+
+            <input type="text"
+                   value="admin"
+                   readonly>
+
+
+            <label>Prediction Method</label>
+
+            <input type="text"
+                   value="Machine Learning - Linear Regression"
+                   readonly>
+
+
+            <label>Pass Mark</label>
+
+            <input type="text"
+                   value="50%"
+                   readonly>
+
+
+            <br>
+
+            <p style="color:#667085; margin-top:20px;">
+                These settings are currently configured by the system administrator.
+            </p>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+
+</html>
