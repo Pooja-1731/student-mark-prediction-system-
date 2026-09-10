@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Prediction Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+
+        <h2>🎓 Student Marks</h2>
+        <p>Prediction System</p>
+
+        <a href="{{ url_for('dashboard') }}">🏠 Dashboard</a>
+
+        <a class="active" href="{{ url_for('predict') }}">📊 Predict Marks</a>
+
+        <a href="{{ url_for('students') }}">👨‍🎓 Students</a>
+
+        <a href="{{ url_for('reports') }}">📈 Reports</a>
+
+        <a href="{{ url_for('settings') }}">⚙️ Settings</a>
+
+        <a href="{{ url_for('logout') }}">🚪 Logout</a>
+
+    </aside>
+
+    <main class="main">
+
+        <div class="topbar">
+
+            <div>
+                <h1>Prediction Result</h1>
+                <p>Student academic performance prediction</p>
+            </div>
+
+            <div class="admin">
+                👤 Admin
+            </div>
+
+        </div>
+
+        <div class="prediction-box">
+
+            <h2>🎓 Student Prediction</h2>
+
+            <br>
+
+            <p>
+                <strong>Student Name:</strong>
+                {{ student_name }}
+            </p>
+
+            <br>
+
+            <p>
+                <strong>Predicted Marks:</strong>
+                {{ predicted_marks }}%
+            </p>
+
+            <br>
+
+            <p>
+                <strong>Status:</strong>
+                {{ status }}
+            </p>
+
+            <br>
+
+            <a href="{{ url_for('predict') }}"
+               class="predict-btn">
+                🔄 Predict Another Student
+            </a>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+
+</html>
