@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Predict Student Marks</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+
+        <h2>🎓 Student Marks</h2>
+        <p>Prediction System</p>
+
+        <a href="{{ url_for('dashboard') }}">
+            🏠 Dashboard
+        </a>
+
+        <a class="active" href="{{ url_for('predict') }}">
+            📊 Predict Marks
+        </a>
+
+        <a href="{{ url_for('students') }}">
+            👨‍🎓 Students
+        </a>
+
+        <a href="{{ url_for('reports') }}">
+            📈 Reports
+        </a>
+
+        <a href="{{ url_for('settings') }}">
+            ⚙️ Settings
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            🚪 Logout
+        </a>
+
+    </aside>
+
+    <main class="main">
+
+        <div class="topbar">
+
+            <div>
+                <h1>Predict Student Marks</h1>
+
+                <p>
+                    Enter student details to predict academic performance.
+                </p>
+            </div>
+
+            <div class="admin">
+                👤 Admin
+            </div>
+
+        </div>
+
+        <div class="prediction-box">
+
+            <h2>Enter Student Details</h2>
+
+            <form method="POST">
+
+                <label>Student Name</label>
+
+                <input type="text"
+                       name="student_name"
+                       placeholder="Enter student name"
+                       required>
+
+                <label>Attendance (%)</label>
+
+                <input type="number"
+                       name="attendance"
+                       min="0"
+                       max="100"
+                       placeholder="Example: 85"
+                       required>
+
+                <label>Assignment Marks</label>
+
+                <input type="number"
+                       name="assignment_marks"
+                       min="0"
+                       max="100"
+                       placeholder="Example: 80"
+                       required>
+
+                <label>Previous Exam Marks</label>
+
+                <input type="number"
+                       name="previous_exam_marks"
+                       min="0"
+                       max="100"
+                       placeholder="Example: 75"
+                       required>
+
+                <button type="submit">
+                    📊 Predict Marks
+                </button>
+
+            </form>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+
+</html>
