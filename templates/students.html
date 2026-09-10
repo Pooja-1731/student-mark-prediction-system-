@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Students - Student Marks Prediction</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+
+        <h2>🎓 Student Marks</h2>
+        <p>Prediction System</p>
+
+        <a href="{{ url_for('dashboard') }}">
+            🏠 Dashboard
+        </a>
+
+        <a href="{{ url_for('predict') }}">
+            📊 Predict Marks
+        </a>
+
+        <a class="active" href="{{ url_for('students') }}">
+            👨‍🎓 Students
+        </a>
+
+        <a href="{{ url_for('reports') }}">
+            📈 Reports
+        </a>
+
+        <a href="{{ url_for('settings') }}">
+            ⚙️ Settings
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            🚪 Logout
+        </a>
+
+    </aside>
+
+    <main class="main">
+
+        <div class="topbar">
+
+            <div>
+                <h1>Students</h1>
+
+                <p>
+                    View student prediction records
+                </p>
+            </div>
+
+            <div class="admin">
+                👤 Admin
+            </div>
+
+        </div>
+
+        <div class="activity">
+
+            <h2>Student Records</h2>
+
+            <br>
+
+            <table>
+
+                <tr>
+                    <th>Student Name</th>
+                    <th>Predicted Marks</th>
+                    <th>Status</th>
+                </tr>
+
+                {% if predictions %}
+
+                    {% for student in predictions %}
+
+                    <tr>
+
+                        <td>
+                            {{ student.student_name }}
+                        </td>
+
+                        <td>
+                            {{ student.marks }}%
+                        </td>
+
+                        <td class="{% if student.status == 'Pass' %}pass{% else %}risk{% endif %}">
+                            {{ student.status }}
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <tr>
+                        <td colspan="3">
+                            No student records available
+                        </td>
+                    </tr>
+
+                {% endif %}
+
+            </table>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+
+</html>
